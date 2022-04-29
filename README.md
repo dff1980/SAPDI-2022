@@ -456,7 +456,6 @@ sudo salt -G "roles:rancher" cmd.run "echo 'system-default-registry: \"'${regist
 sudo salt -G "roles:rancher" cmd.run 'systemctl enable rke2-server --now'
 ```
 
-
 ## Install Rancher Server
 ```bash
 #Since this feature allows a minion to push a file up to the master server it is disabled by default for security purposes. To enable, set file_recv to True in the master configuration file, and restart the master.
