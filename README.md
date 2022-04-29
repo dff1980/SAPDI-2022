@@ -500,15 +500,31 @@ sudo salt -G "roles:rke2-worker" cmd.run "INSTALL CMD FOR Workers"
 ```
  - Install Longhorn
  - Install Minio
- - Create ingress for MinIO Console 
- - Create MiniIO tenant
- - Check S3
-
-# Appendix
+Init MinIO
+```bash
+kubectl minio version
+kubectl minio init
 ```
-openssl s_client -servername https://172.17.13.137.sslip.io -connect 192.168.0.11.sslip.io:443 </dev/null 2>/dev/null | openssl x509 -noout -text | grep DNS
-
-curl -vvI https://192.168.0.11.sslip.io
-kubectl -n cattle-system logs -l app=cattle-cluster-agent
-openssl x509 -noout -ext subjectAltName -in cert.pem
+ - Create ingress for MinIO Console 
+Obtain token
+```bash
+kubectl get secrets -n minio-operator -o=jsonpath='{.items[?(@.metadata.annotations.kubernetes\.io/service-account\.name=="console-sa")].data.token}' | base64 -d; echo
+```
+ - Create MiniIO tenant
+Login to MinIO console with token from previously step.
+ - create ingress for MinIO Console
+Create an ingress.
+Add Annotations to the ingress.
+```
+nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+nginx.ingress.kubernetes.io/proxy-body-size: 10G
+```
+ - Check S3
+# Appendix
+If you uses the registry in the Rancher (for example Harbor) you need add annotations to ingress:
+```
+  annotations:
+          nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+          nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+          nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
 ```
