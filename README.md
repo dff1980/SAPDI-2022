@@ -67,6 +67,8 @@ All server connect to LAN network (isolated from Internet).
 ## Download images
 From a system that has access to the internet, fetch the latest Helm chart, images and utilities  and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
+For install server from JeOS image you can use a this [script](front_server_JeOS-install_script.md).
+
 0. Download & install CLI interface helm
 
 ```bash
@@ -239,7 +241,7 @@ Copy to an external data store:
 
 - Get a SUSE Linux Enterprise Server subscription.
 - Download the installation media for SUSE Linux Enterprise Server 15 SP3. (Full ISO, for example)
-- All system need access to update repositories (RMT) or installation media
+- All system need access to update repositories (RMT) or installation media.
 
 ######
 You can create the own RMT server using the next [instruction](rmt.md).
