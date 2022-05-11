@@ -512,6 +512,7 @@ kubectl get secrets -n minio-operator -o=jsonpath='{.items[?(@.metadata.annotati
  - Create MiniIO tenant
 Login to MinIO console with token from previously step.
  - create ingress for MinIO Console
+You needed SSL Certificate with Subject Alternative Name for FQDN. Because an installation system for SAP DI doesn't approve Self Signed standard certificate for Nginx ingress.
 Create an ingress.
 Add Annotations to the ingress.
 ```
