@@ -1,10 +1,10 @@
 # Below instruction to create RKE RKE2 Cluster using Rancher CLI and API.
-If you using CLI you can install RKE, but can bootstrap Rancher server.
-If you chose API you can bootstrap Rancher server and install RKE & RKE2, but you need be very familiars witch API, web codding and etc.
+If you're using CLI you can install RKE, but can bootstrap Rancher server.
+If you chose API you can bootstrap Rancher server and install RKE & RKE2, but you need to be very familiars with API, web codding etc.
 
 ## Rancher CLI
 Witch rancher CLI you can create only RKE, not RKE2 cluster
-Currently you need use Web for bootstrap Rancher in web and obtain token.
+Currently, you need to use Web for bootstrap Rancher in web and obtain token.
 
 Deploy CLI
 ```bash

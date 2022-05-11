@@ -16,7 +16,7 @@
   - [nip.io](https://github.com/exentriquesolutions/nip.io)
 - Local NTP Server
 - SSD for Longhorn on Worker Nodes
-- Server with docker and connect to Internet for download images.
+- Server with docker and connect to Internet to download images.
 
 ### Minimal hardware requirements for an SAP DI 3 deployment for production use
 
@@ -104,7 +104,7 @@ From the release’s Assets section, download the following files, which are req
  
  __rke2-images-all.linux-amd64.txt__
 
-  1. add RKE2 images to rancher-images.txt:
+  1. Add RKE2 images to rancher-images.txt:
 ```bash
 cat rke2-images-all.linux-amd64.txt >> ./rancher-images.txt
 ```
@@ -162,9 +162,9 @@ curl -L -o cert-manager/cert-manager-crd.yaml https://github.com/jetstack/cert-m
 
 9. Render the Rancher template
  
-Chose option 1 - for you own certificate or 2 for self-signed certificate.
+Chose option 1 - for your own certificate or 2 - for self-signed certificate.
 
-  1. For You Own Certificate.
+  1. For Your Own Certificate.
 ```bash
 export rancher_fqdn=192.168.0.11.sslip.io
 export registry_url=192.168.0.10.sslip.io:5000
@@ -242,7 +242,7 @@ Copy to an external data store:
 - All system need access to update repositories (RMT) or installation media
 
 ######
-You can create own RMT server using the next [instruction](rmt.md).
+You can create the own RMT server using the next [instruction](rmt.md).
 #### For All Servers
 
 - Static IP for all Nodes.
@@ -273,7 +273,7 @@ sudo systemctl enable salt-master --now
 ```
 ### Configure servers
 
-At Jump Host run the next command:
+At Jump Host, run the next command:
 ```bash
 zypper in -y sudo
 ```
@@ -326,7 +326,7 @@ sudo salt '*' cmd.run 'systemctl status chronyd' # Check status choryd
 sudo salt '*' cmd.run 'chronyc sources' # Check configuration chronyd
 ```
 ## Make own certificate
-At Jump host run commands below.
+At Jump host, run commands below.
 
 ```bash
 
@@ -339,7 +339,7 @@ cd ..
 ```
 ## Run local registry on Jump Host
 
-Copy air gap data (images and utilites) to Jump Host from the external data store:
+Copy air gap data (images and utilities) to Jump Host from the external data store:
 
 - httpd.gz
 - registry.gz
@@ -407,7 +407,7 @@ systemctl restart docker
 ```
 ## Import images to local registry
 
-Copy air gap data (images and utilites) to Jump Host from the external data store:
+Copy air gap data (images and utilities) to Jump Host from the external data store:
 - rancher-load-images.sh
 - rancher-images.tar.gz
 - rancher-images.txt
@@ -418,7 +418,7 @@ Copy air gap data (images and utilites) to Jump Host from the external data stor
 - rke2.linux-amd64.tar.gz
 - rancher-linux-amd64-v2.6.4.tar.gz
 
-At Jump host run commands below.
+At Jump host, run commands below.
 
 ```bash
 sudo cp kubectl /usr/local/bin/
@@ -484,9 +484,9 @@ kubectl -n cattle-system apply -R -f ./rancher
 What about use CLI?
 You can create bootstrap Rancher server and create RKE using the next [instruction](rancher-cli.md).
 
-Goto Rancher web interface and do next:
- - Create custom cluster and obtain a install command
- - Start the install command at node
+Go to Rancher web interface and do next:
+ - Create custom cluster and obtain an installation command
+ - Start the installation command at node
 
 ```bash
 sudo salt '192.168.0.20' grains.append roles rke2-master
@@ -521,7 +521,7 @@ nginx.ingress.kubernetes.io/proxy-body-size: 10G
 ```
  - Check S3
 # Appendix
-If you uses the registry in the Rancher (for example Harbor) you need add annotations to ingress:
+If you use the registry in the Rancher (for example Harbor) you need to add annotations to ingress:
 ```
   annotations:
           nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
