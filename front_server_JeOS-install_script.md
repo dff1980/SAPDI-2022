@@ -6,7 +6,7 @@ ip l s up eth0
 ip ro add default via 172.17.149.254
 echo "nameserver 172.17.149.254" >> /etc/resolv.conf
 ```
-## Live resize. Resize disk VM on-line and resize partition
+## Live resize. Resize disk VM on-line and resize partition.
 
 ```bash
 echo -e "quit\nY\n" | sfdisk /dev/sda --force
