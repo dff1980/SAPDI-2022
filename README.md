@@ -203,7 +203,7 @@ helm template rancher ./rancher-2.6.4.tgz --output-dir . \
     --set useBundledSystemChart=true \
     --version=2.6.4
 ```
-**You can use option --kube-version, for example --kube-version v1.20.13**
+*You can use option --kube-version, for example --kube-version v1.20.13*
 
 10. Download CLI utilities
 ```bash
